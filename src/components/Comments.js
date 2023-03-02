@@ -1,24 +1,23 @@
 import {useState, useEffect, useRef} from 'react';
 
-
 function Comments(){
     const [comments, setComments] = useState([]);
     const handleCommentsGet = useRef(()=>{});
 
     handleCommentsGet.current = () => {
         //handle fetch of data
-        fetch('../data.json')
-            .then((res)=>{
-                //setComments(res.comments); //?
-                const cx = res.json();
-                setComments(cx);
-            })
+        // fetch('../data.json')
+        //     .then((res)=>{
+        //         //setComments(res.comments); //?
+        //         const cx = res.json();
+        //         setComments(cx);
+        //     })
     }
 
     //on first mount of component, do this.
     useEffect(()=>{
         handleCommentsGet.current();
-        console.log(comments);
+        console.log(comments); //WHY is this an array with length 0 ?????????????
     }, [])
 
     
